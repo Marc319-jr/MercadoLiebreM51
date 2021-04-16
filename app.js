@@ -3,26 +3,26 @@ const { dirname } = require('path');
 const app = express();
 const path = require ('path');
 const puerto = process.env.PORT;
-
 app.use(express.static('public'));
 
-app.set('view engine' ,'ejs')
 
-app.get('/' , (req,res) => {
-    res.render('index')
-});
+//dodnde estan los gerentes de ruteo
+const indexRouter = require('./routes/indexRouter');
+/*
+const userRouter = require('./routes/userRouter');
+const productRouter = require('./routes/productRouter');
+*/
 
-app.get('/register' , (req,res) => 
-{
-    res.render('register')
-});
+app.set('view engine', 'ejs');
 
-app.get('/login' , (req,res) => 
-{
-    res.render('login')
-})
+// llamo al ruteo
 
+app.use('/' , indexRouter);
 
+/*
+app.use('/' , userRouter);
+app.use('/' , productRouter);
+*/
 
 
 
